@@ -1,6 +1,6 @@
 `timescale 1 ps / 1 ps
 
-module top_wrapper
+module vu13p_wrapper
    (aurora_refclk_clk_n,
     aurora_refclk_clk_p,
     aurora_rx_slave_rxn,

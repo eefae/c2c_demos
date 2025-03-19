@@ -1,6 +1,6 @@
 `timescale 1 ps / 1 ps
 
-module smf_c2c_master_wrapper
+module smf_wrapper
    (aurora_refclk_clk_n,
     aurora_refclk_clk_p,
     aurora_rx_master_rxn,
