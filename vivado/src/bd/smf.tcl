@@ -1,6 +1,6 @@
 
 ################################################################
-# This is a generated script based on design: sx_c2c_smf
+# This is a generated script based on design: smf_c2c_master
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -35,7 +35,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source sx_c2c_smf_script.tcl
+# source smf_c2c_master_script.tcl
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
@@ -49,7 +49,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name smf_c2c_master
+set design_name smf
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -312,14 +312,14 @@ proc create_hier_cell_c2c { parentCell nameHier } {
 
 
   # Create pins
-  create_bd_pin -dir O -from 0 -to 0 Dout
-  create_bd_pin -dir O -from 0 -to 0 In1
   create_bd_pin -dir I -type rst aurora_pma_init_in
   create_bd_pin -dir O axi_c2c_link_status_out
   create_bd_pin -dir O channel_up
   create_bd_pin -dir O -from 4 -to 0 dout1
   create_bd_pin -dir O gt_pll_lock
   create_bd_pin -dir I -type clk init_clk
+  create_bd_pin -dir O -from 0 -to 0 lane0
+  create_bd_pin -dir O -from 0 -to 0 lane1
   create_bd_pin -dir I -type clk s_aclk
   create_bd_pin -dir I -type rst s_aresetn
 
@@ -390,61 +390,8 @@ proc create_hier_cell_c2c { parentCell nameHier } {
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins s_aresetn] [get_bd_pins c2c_master/s_aresetn]
   connect_bd_net -net vio_0_probe_out1 [get_bd_pins aurora_pma_init_in] [get_bd_pins c2c_master/aurora_pma_init_in]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins dout1] [get_bd_pins xlconcat_0/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins In1] [get_bd_pins xlconcat_0/In1] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins Dout] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlslice_1/Dout]
-
-  # Perform GUI Layout
-  regenerate_bd_layout -hierarchy [get_bd_cells /c2c] -layout_string {
-   "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.611354",
-   "Default View_TopLeft":"-195,-51",
-   "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
-#  -string -flagsOSRD
-preplace port s_axi -pg 1 -lvl 0 -x -10 -y 140 -defaultsOSRD
-preplace port aurora_refclk -pg 1 -lvl 0 -x -10 -y 550 -defaultsOSRD
-preplace port aurora_tx_master -pg 1 -lvl 5 -x 1450 -y 570 -defaultsOSRD
-preplace port aurora_rx_master -pg 1 -lvl 0 -x -10 -y 590 -defaultsOSRD
-preplace port port-id_gt_pll_lock -pg 1 -lvl 5 -x 1450 -y 220 -defaultsOSRD
-preplace port port-id_channel_up -pg 1 -lvl 5 -x 1450 -y 260 -defaultsOSRD
-preplace port port-id_axi_c2c_link_status_out -pg 1 -lvl 5 -x 1450 -y 280 -defaultsOSRD
-preplace port port-id_s_aclk -pg 1 -lvl 0 -x -10 -y 180 -defaultsOSRD
-preplace port port-id_s_aresetn -pg 1 -lvl 0 -x -10 -y 200 -defaultsOSRD
-preplace port port-id_aurora_pma_init_in -pg 1 -lvl 0 -x -10 -y 280 -defaultsOSRD
-preplace port port-id_init_clk -pg 1 -lvl 0 -x -10 -y 300 -defaultsOSRD
-preplace portBus In1 -pg 1 -lvl 5 -x 1450 -y 20 -defaultsOSRD
-preplace portBus Dout -pg 1 -lvl 5 -x 1450 -y 240 -defaultsOSRD
-preplace portBus dout1 -pg 1 -lvl 5 -x 1450 -y 120 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 3 -x 1080 -y 100 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 4 -x 1320 -y 120 -defaultsOSRD
-preplace inst xlslice_1 -pg 1 -lvl 3 -x 1080 -y 200 -defaultsOSRD
-preplace inst c2c_master -pg 1 -lvl 1 -x 270 -y 230 -defaultsOSRD
-preplace inst aurora_master -pg 1 -lvl 2 -x 730 -y 590 -defaultsOSRD
-preplace netloc Net 1 2 1 970 100n
-preplace netloc aurora_master_user_clk_out 1 0 3 30 800 NJ 800 940
-preplace netloc c2c_master_aurora_pma_init_out 1 1 1 510 210n
-preplace netloc aurora_master_mmcm_not_locked_out 1 0 3 50 380 NJ 380 960
-preplace netloc c2c_master_aurora_reset_pb 1 1 1 500 230n
-preplace netloc xlslice_0_Dout 1 3 2 1190 10 1430J
-preplace netloc aurora_master_gt_pll_lock 1 2 3 N 510 1200 220 NJ
-preplace netloc xlslice_1_Dout 1 3 2 1180 20 1420J
-preplace netloc c2c_block_axi_c2c_aurora_channel_up 1 0 5 40 390 NJ 390 980 260 1210 260 NJ
-preplace netloc c2c_master_axi_c2c_link_status_out 1 1 4 NJ 270 NJ 270 1220 280 NJ
-preplace netloc xlconcat_0_dout 1 4 1 NJ 120
-preplace netloc clk_wiz_0_clk_200 1 0 1 NJ 180
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 1 NJ 200
-preplace netloc vio_0_probe_out1 1 0 1 NJ 280
-preplace netloc init_clk_1 1 0 2 10 540 490J
-preplace netloc aurora_master_USER_DATA_M_AXIS_RX 1 0 3 20 790 NJ 790 950
-preplace netloc c2c_master_AXIS_TX 1 1 1 520 150n
-preplace netloc smartconnect_0_M00_AXI 1 0 1 NJ 140
-preplace netloc GT_DIFF_REFCLK1_0_1 1 0 2 NJ 550 NJ
-preplace netloc aurora_master_GT_SERIAL_TX 1 2 3 NJ 570 NJ 570 NJ
-preplace netloc GT_SERIAL_RX_0_1 1 0 2 NJ 590 NJ
-levelinfo -pg 1 -10 270 730 1080 1320 1450
-pagesize -pg 1 -db -bbox -sgen -200 0 1670 810
-"
-}
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins lane1] [get_bd_pins xlconcat_0/In1] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins lane0] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlslice_1/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1396,9 +1343,9 @@ MIO#GPIO1 MIO#GPIO1 MIO#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#USB 0#USB 0
     CONFIG.PSU__PROTECTION__ENABLE {0} \
     CONFIG.PSU__PROTECTION__FPD_SEGMENTS {SA:0xFD1A0000 ;SIZE:1280;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD000000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU\
 Firmware  |  SA:0xFD010000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD020000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware\
- |  SA:0xFD030000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD040000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |\
- SA:0xFD050000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD610000 ;SIZE:512;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD5D0000\
-;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware} \
+|  SA:0xFD030000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD040000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  | SA:0xFD050000\
+;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD610000 ;SIZE:512;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD5D0000 ;SIZE:64;UNIT:KB\
+;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware} \
     CONFIG.PSU__PROTECTION__LPD_SEGMENTS {SA:0xFF980000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF5E0000 ;SIZE:2560;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU\
 Firmware|SA:0xFFCC0000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF180000 ;SIZE:768;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF410000\
 ;SIZE:640;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFFA70000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF9A0000 ;SIZE:64;UNIT:KB\
@@ -1589,8 +1536,8 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net vio_0_probe_out1 [get_bd_pins c2c/aurora_pma_init_in] [get_bd_pins vio_0/probe_out1]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins c2c/dout1] [get_bd_pins zynq_ultra_ps_e_0/emio_gpio_i]
   connect_bd_net -net xlconcat_0_dout1 [get_bd_pins util_vector_logic_0/Op1] [get_bd_pins xlconcat_0/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins c2c/In1] [get_bd_pins vio_0/probe_in1]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins c2c/Dout] [get_bd_pins vio_0/probe_in2]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins c2c/lane1] [get_bd_pins vio_0/probe_in1]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins c2c/lane0] [get_bd_pins vio_0/probe_in2]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins zynq_ultra_ps_e_0/pl_resetn0]
 
   # Create address segments
@@ -1599,46 +1546,46 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   # Perform GUI Layout
   regenerate_bd_layout -layout_string {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.486957",
-   "Default View_TopLeft":"214,-125",
+   "Default View_ScaleFactor":"0.688663",
+   "Default View_TopLeft":"-42,225",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port aurora_rx_master -pg 1 -lvl 0 -x 0 -y 640 -defaultsOSRD
-preplace port aurora_refclk -pg 1 -lvl 0 -x 0 -y 510 -defaultsOSRD
-preplace port aurora_tx_master -pg 1 -lvl 6 -x 1960 -y 490 -defaultsOSRD
-preplace port sysclk -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
-preplace portBus led_out -pg 1 -lvl 6 -x 1960 -y 200 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 3 -x 880 -y 100 -defaultsOSRD
-preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 3 -x 880 -y 350 -defaultsOSRD
-preplace inst smartconnect_0 -pg 1 -lvl 4 -x 1380 -y 410 -defaultsOSRD
-preplace inst vio_0 -pg 1 -lvl 2 -x 400 -y 370 -defaultsOSRD
-preplace inst c2c -pg 1 -lvl 5 -x 1710 -y 550 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 4 -x 1380 -y 200 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 5 -x 1710 -y 200 -defaultsOSRD
-preplace inst sysclk -pg 1 -lvl 1 -x 120 -y 580 -defaultsOSRD
-preplace netloc aurora_master_gt_pll_lock 1 1 5 260 210 NJ 210 1220 290 NJ 290 1910
-preplace netloc c2c_block_axi_c2c_aurora_channel_up 1 1 5 230 200 NJ 200 1230 300 NJ 300 1940
-preplace netloc c2c_master_axi_c2c_link_status_out 1 1 5 250 220 NJ 220 1240 310 NJ 310 1930
-preplace netloc clk_wiz_0_clk_200 1 1 4 220 260 560 490 1240 500 1530J
-preplace netloc init_clk_1 1 1 4 N 590 NJ 590 NJ 590 1520J
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 3 2 1200 570 N
-preplace netloc vio_0_probe_out1 1 2 3 550 600 NJ 600 1530J
-preplace netloc xlslice_0_Dout 1 1 5 240 520 NJ 520 NJ 520 1520J 430 1890
-preplace netloc xlslice_1_Dout 1 1 5 260 480 NJ 480 1220J 330 NJ 330 1900
-preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 2 2 570 500 1190
-preplace netloc vio_0_probe_out0 1 2 1 550 100n
-preplace netloc xlconcat_0_dout 1 3 3 NJ 320 NJ 320 1920
-preplace netloc xlconcat_0_dout1 1 4 1 NJ 200
-preplace netloc util_vector_logic_0_Res 1 5 1 NJ 200
-preplace netloc CLK_IN_D_0_1 1 0 1 NJ 580
-preplace netloc GT_DIFF_REFCLK1_0_1 1 0 5 NJ 510 NJ 510 NJ 510 NJ 510 NJ
-preplace netloc GT_SERIAL_RX_0_1 1 0 5 20J 500 NJ 500 540J 530 NJ 530 NJ
-preplace netloc aurora_master_GT_SERIAL_TX 1 5 1 NJ 490
-preplace netloc smartconnect_0_M00_AXI 1 4 1 1530 410n
-preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 3 1 1210 280n
-levelinfo -pg 1 0 120 400 880 1380 1710 1960
-pagesize -pg 1 -db -bbox -sgen -180 0 2140 660
+preplace port aurora_refclk -pg 1 -lvl 0 -x 0 -y 470 -defaultsOSRD
+preplace port aurora_rx_master -pg 1 -lvl 0 -x 0 -y 490 -defaultsOSRD
+preplace port aurora_tx_master -pg 1 -lvl 6 -x 2190 -y 470 -defaultsOSRD
+preplace port sysclk -pg 1 -lvl 0 -x 0 -y 560 -defaultsOSRD
+preplace portBus led_out -pg 1 -lvl 6 -x 2190 -y 120 -defaultsOSRD
+preplace inst c2c -pg 1 -lvl 5 -x 1940 -y 530 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 3 -x 890 -y 110 -defaultsOSRD
+preplace inst smartconnect_0 -pg 1 -lvl 4 -x 1410 -y 380 -defaultsOSRD
+preplace inst sysclk -pg 1 -lvl 1 -x 120 -y 560 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 5 -x 1940 -y 120 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 2 -x 420 -y 350 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 4 -x 1410 -y 120 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 3 -x 890 -y 350 -defaultsOSRD
+preplace netloc aurora_master_gt_pll_lock 1 1 5 250 210 NJ 210 1200 210 NJ 210 2170
+preplace netloc c2c_block_axi_c2c_aurora_channel_up 1 1 5 230 10 NJ 10 1230 30 NJ 30 2160
+preplace netloc c2c_master_axi_c2c_link_status_out 1 1 5 240 220 NJ 220 1230 220 NJ 220 2150
+preplace netloc clk_wiz_0_clk_200 1 1 4 220 480 570 480 1230 480 1560J
+preplace netloc init_clk_1 1 1 4 N 550 NJ 550 NJ 550 NJ
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 3 2 1220 540 1550
+preplace netloc util_vector_logic_0_Res 1 5 1 NJ 120
+preplace netloc vio_0_probe_out0 1 2 1 560 110n
+preplace netloc vio_0_probe_out1 1 2 3 560 500 NJ 500 1550J
+preplace netloc xlconcat_0_dout 1 3 3 1230J 300 NJ 300 2140
+preplace netloc xlconcat_0_dout1 1 4 1 NJ 120
+preplace netloc xlslice_0_Dout 1 1 5 250 510 NJ 510 NJ 510 1570J 410 2120
+preplace netloc xlslice_1_Dout 1 1 5 260 230 NJ 230 NJ 230 NJ 230 2130
+preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 2 2 580 240 1200
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 560
+preplace netloc GT_DIFF_REFCLK1_0_1 1 0 5 NJ 470 NJ 470 NJ 470 NJ 470 NJ
+preplace netloc GT_SERIAL_RX_0_1 1 0 5 NJ 490 NJ 490 NJ 490 NJ 490 NJ
+preplace netloc aurora_master_GT_SERIAL_TX 1 5 1 NJ 470
+preplace netloc smartconnect_0_M00_AXI 1 4 1 1580 380n
+preplace netloc zynq_ultra_ps_e_0_M_AXI_HPM0_FPD 1 3 1 1210 300n
+levelinfo -pg 1 0 120 420 890 1410 1940 2190
+pagesize -pg 1 -db -bbox -sgen -180 0 2370 1030
 "
 }
 
