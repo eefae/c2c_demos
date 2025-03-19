@@ -31,9 +31,9 @@ if {![string equal $ver $version_required]} {
 
 # Possible targets
 # UPDATER START
-dict set target_dict smf { avnet.com auboard_15p { X4 } mb }
-dict set target_dict vu13p { xilinx.com kc705 { X4 } mb }
-dict set target_dict vu19p { xilinx.com kc705 { X1 } mb }
+dict set target_dict smf
+dict set target_dict vu13p
+dict set target_dict vu19p
 # UPDATER END
 
 # Function to display the options and get user input
