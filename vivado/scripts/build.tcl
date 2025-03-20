@@ -28,59 +28,26 @@ if {![string equal $ver $version_required]} {
   return
 }
 
+set target [lindex $argv 0]
+create_project -force project_bft_batch ./project_bft_batch -part xczu4eg-fbvb900-2-e
 
-# Possible targets
-# UPDATER START
-dict set target_dict smf
-dict set target_dict vu13p
-dict set target_dict vu19p
-# UPDATER END
 
-# Function to display the options and get user input
-proc selectTarget {target_dict} {
-    # Create a list to hold the keys in order
-    set keys_list [dict keys $target_dict]
-    set keys_list [lsort $keys_list]
 
-    # Forever loop until we break it when the user confirms their selection
-    while {1} {
-        # Initialize a counter for the numbering
-        set counter 0
 
-        # Display options
-        puts "Possible target designs:"
-        foreach key $keys_list {
-            incr counter
-            puts "  $counter: $key"
-        }
 
-        # Ask for user input
-        set user_choice -1
-        while {($user_choice < 1) || ($user_choice > $counter)} {
-            puts -nonewline "Choose target design (1-$counter): "
-            flush stdout
-            gets stdin user_choice
 
-            # Check if the input is a valid number
-            if {![string is integer -strict $user_choice]} {
-                set user_choice -1
-                continue
-            }
-        }
 
-        # Confirm selection
-        set selected_key [lindex $keys_list [expr {$user_choice - 1}]]
-        puts -nonewline "Confirm selection '$selected_key' (Y/n): "
-        flush stdout
-        gets stdin confirmation
 
-        # Check confirmation
-        if {[string match -nocase "y*" $confirmation] || [string equal -length 1 "" $confirmation]} {
-            # If the user confirmed, return the selected key
-            return $selected_key
-        }
-    }
+
+
+
+
+
+if {argc != 1} {
+  puts 'Please specify target to build'
+  exit 1
 }
+
 
 # Target can be specified by creating the target variable before sourcing, or in the command line arguments
 if { [info exists target] } {
