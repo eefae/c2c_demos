@@ -1,0 +1,89 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Mar 21 17:19:01 2025
+# Process ID: 575428
+# Current directory: /home/eric/Documents/projects/c2c_demos/vivado
+# Command line: vivado -mode batch -notrace -source scripts/build.tcl -log vu13p_xpr.log -journal vu13p_xpr.jou -tclargs vu13p
+# Log file: /home/eric/Documents/projects/c2c_demos/vivado/vu13p_xpr.log
+# Journal file: /home/eric/Documents/projects/c2c_demos/vivado/vu13p_xpr.jou
+# Running On: eda2, OS: Linux, CPU Frequency: 3636.744 MHz, CPU Physical cores: 12, Host memory: 66982 MB
+#-----------------------------------------------------------
+source scripts/build.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2001.332 ; gain = 85.992 ; free physical = 2030 ; free virtual = 29276
+INFO: [BD::TCL 103-2003] Currently there is no design <vu13p> in project, so creating one...
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/vu13p.bd> 
+INFO: [BD::TCL 103-2004] Making design <vu13p> as current_bd_design.
+INFO: [BD::TCL 103-2005] Currently the variable <design_name> is equal to "vu13p".
+INFO: [BD::TCL 103-2011] Checking if the following IPs exist in the project's IP catalog:  
+xilinx.com:ip:clk_wiz:6.0 xilinx.com:ip:proc_sys_reset:5.0 xilinx.com:ip:smartconnect:1.0 xilinx.com:ip:vio:3.0 xilinx.com:ip:axi_bram_ctrl:4.1 xilinx.com:ip:blk_mem_gen:8.4 xilinx.com:ip:aurora_64b66b:12.0 xilinx.com:ip:axi_chip2chip:5.0 xilinx.com:ip:xlslice:1.0  .
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] vu13p_axi_bram_ctrl_0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] vu13p_axi_bram_ctrl_0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] vu13p_axi_bram_ctrl_0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] vu13p_axi_bram_ctrl_0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [Device 21-403] Loading part xcvu13p-fhgb2104-2-e
+create_bd_cell: Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 3375.387 ; gain = 1195.445 ; free physical = 799 ; free virtual = 28047
+WARNING: [IP_Flow 19-4684] Expected long value for param C_NUM_OF_IO but, float/scientific notation value 20.0 is provided. The value is converted to long type(20)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_NUM_OF_IO but, float/scientific notation value 20.0 is provided. The value is converted to long type(20)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_NUM_OF_IO but, float/scientific notation value 20.0 is provided. The value is converted to long type(20)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_NUM_OF_IO but, float/scientific notation value 28.0 is provided. The value is converted to long type(28)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_NUM_OF_IO but, float/scientific notation value 28.0 is provided. The value is converted to long type(28)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_AURORA_WIDTH but, float/scientific notation value 1.0 is provided. The value is converted to long type(1)
+WARNING: [IP_Flow 19-4684] Expected long value for param C_AURORA_WIDTH but, float/scientific notation value 2.0 is provided. The value is converted to long type(2)
+WARNING: [BD 41-1306] The connection to interface pin </c2c/aurora_64b66b_0/channel_up> is being overridden by the user with net <aurora_64b66b_0_channel_up>. This pin will not be connected as a part of interface connection <CORE_STATUS>.
+WARNING: [BD 41-1306] The connection to interface pin </c2c/aurora_64b66b_0/gt_pll_lock> is being overridden by the user with net <aurora_64b66b_0_gt_pll_lock>. This pin will not be connected as a part of interface connection <CORE_STATUS>.
+WARNING: [BD 41-1306] The connection to interface pin </c2c/aurora_64b66b_0/lane_up> is being overridden by the user with net <aurora_64b66b_0_lane_up>. This pin will not be connected as a part of interface connection <CORE_STATUS>.
+WARNING: [BD 41-1306] The connection to interface pin </c2c/aurora_64b66b_0/mmcm_not_locked_out> is being overridden by the user with net <aurora_64b66b_0_mmcm_not_locked_out>. This pin will not be connected as a part of interface connection <CORE_STATUS>.
+create_bd_cell: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 3653.785 ; gain = 275.430 ; free physical = 529 ; free virtual = 27775
+Slave segment '/bram/axi_bram_ctrl_0/S_AXI/Mem0' is being assigned into address space '/c2c/axi_chip2chip_0/MAXI' at <0xA000_0000 [ 16K ]>.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] vu13p_smartconnect_0_0: SmartConnect vu13p_smartconnect_0_0 is in High-performance Mode.
+WARNING: [BD 41-2180] Resetting the memory initialization file of </bram/blk_mem_gen_0> to default.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : gt_diff_refclk1 of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 156250000 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : USER CLK OUT of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 97656250 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : SYNC CLK OUT of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 97656250 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : gt_refclk1_out of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 156250000 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : init_clk of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 75000000 Hz.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/vu13p.bd> 
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_5681faaf.ui> 
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_80fcd48b.ui> 
+INFO: [BD 41-1662] The design 'vu13p.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_5681faaf.ui> 
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_80fcd48b.ui> 
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/blk_mem_gen_0/addra'(32) to pin: '/bram/axi_bram_ctrl_0/bram_addr_a'(14) - Only lower order bits will be connected.
+Verilog Output written to : /home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.gen/sources_1/bd/vu13p/synth/vu13p.v
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/blk_mem_gen_0/addra'(32) to pin: '/bram/axi_bram_ctrl_0/bram_addr_a'(14) - Only lower order bits will be connected.
+Verilog Output written to : /home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.gen/sources_1/bd/vu13p/sim/vu13p.v
+Verilog Output written to : /home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.gen/sources_1/bd/vu13p/hdl/vu13p_wrapper.v
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_5681faaf.ui> 
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_80fcd48b.ui> 
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'sources_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'
+WARNING: [filemgmt 20-732] Unsupported fileset type "Constraints" being added.  The fileset "constrs_1" will not take part in the DesignGraph.
+CRITICAL WARNING: [filemgmt 20-730] Could not find a top module in the fileset constrs_1.
+Resolution: With the gui up, review the source files in the Sources window. Use Add Sources to add any needed sources. If the files are disabled, enable them. You can also select the file and choose Set Used In from the pop-up menu. Review if they are being used at the proper points of the flow.
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_5681faaf.ui> 
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/ui/bd_80fcd48b.ui> 
+Reading block design file </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/vu13p.bd>...
+Adding component instance block -- xilinx.com:ip:axi_bram_ctrl:4.1 - axi_bram_ctrl_0
+Adding component instance block -- xilinx.com:ip:blk_mem_gen:8.4 - blk_mem_gen_0
+Adding component instance block -- xilinx.com:ip:aurora_64b66b:12.0 - aurora_64b66b_0
+Adding component instance block -- xilinx.com:ip:axi_chip2chip:5.0 - axi_chip2chip_0
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - xlslice_0
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - xlslice_1
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:smartconnect:1.0 - smartconnect_0
+Adding component instance block -- xilinx.com:ip:vio:3.0 - vio_0
+Successfully read diagram <vu13p> from block design file </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/vu13p.bd>
+INFO: [xilinx.com:ip:smartconnect:1.0-1] vu13p_smartconnect_0_0: SmartConnect vu13p_smartconnect_0_0 is in High-performance Mode.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : gt_diff_refclk1 of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 156250000 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : USER CLK OUT of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 97656250 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : SYNC CLK OUT of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 97656250 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : gt_refclk1_out of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 156250000 Hz.
+INFO: [xilinx.com:ip:aurora_64b66b:12.0-5910] /c2c/aurora_64b66b_0 NOTE : init_clk of /c2c/aurora_64b66b_0 (Aurora IP) has input port frequency configured as 75000000 Hz.
+Wrote  : </home/eric/Documents/projects/c2c_demos/vivado/vu13p/vu13p.srcs/sources_1/bd/vu13p/vu13p.bd> 
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 21 17:20:05 2025...
