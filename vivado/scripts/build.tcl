@@ -11,7 +11,6 @@ if {![string equal $ver $version_required]} {
 }
 
 
-#set target [lindex $argv 0]
 create_project -force vu13p ./vu13p -part xcvu13p-fhgb2104-2-e
 
 add_files -fileset constrs_1 -norecurse {./src/constraints/vu13p.xdc}
