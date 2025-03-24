@@ -1,12 +1,18 @@
+## Software Setup
 WIP
 
-To Restore Vivado Projects:
-1. cd vivado
 
-2. Make usage:
-  make project TARGET=<target>
+## Hardware Setup
+WIP
+
+
+## Vivado Project Creation  
+The conrresponding Vivado source projects are included in the ```vivado``` subdirectory.  
+To create the projects on your local machine:
+  1. ```cd vivado```
+  2. ```make project TARGET=<target>```
   
-  Target List:
-    smf
-    vu13p
-    vu19p
+  Valid TARGET specifiers include:  
+    1. smf  
+    2. vu13p  
+    3. vu19p  (WIP)
