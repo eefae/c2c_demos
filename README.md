@@ -16,3 +16,12 @@ To create the projects on your local machine:
     1. smf  
     2. vu13p  
     3. vu19p  (WIP)
+
+
+## Platform (.xsa) Build & Generation
+
+
+## Vitis Workspace Setup & Building Test Applications
+
+
+## Deployment
